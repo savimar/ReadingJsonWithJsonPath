@@ -1,0 +1,87 @@
+import com.jayway.jsonpath.JsonPath;
+import java.util.List;
+import java.util.Map;
+
+
+public class JsonUtil {
+
+    public static String getCodeCity(String city)  {
+
+        String json = "[\n" +
+                "  {\n" +
+                "    \"id\": 519188,\n" +
+                "    \"name\": \"Novinki\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 37.666668,\n" +
+                "      \"lat\": 55.683334\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 524894,\n" +
+                "    \"name\": \"Moskva\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 37.606667,\n" +
+                "      \"lat\": 55.761665\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 524925,\n" +
+                "    \"name\": \"Moskovskaya OblastтАЩ\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 37.628334,\n" +
+                "      \"lat\": 55.75639\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 510291,\n" +
+                "    \"name\": \"Peterhof\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 29.9,\n" +
+                "      \"lat\": 59.883331\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 1496747,\n" +
+                "    \"name\": \"Novosibirsk\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 82.934441,\n" +
+                "      \"lat\": 55.041111\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 498817,\n" +
+                "    \"name\": \"Saint Petersburg\",\n" +
+                "    \"country\": \"RU\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": 30.264168,\n" +
+                "      \"lat\": 59.894444\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": 2643743,\n" +
+                "    \"name\": \"London\",\n" +
+                "    \"country\": \"GB\",\n" +
+                "    \"coord\": {\n" +
+                "      \"lon\": -0.12574,\n" +
+                "      \"lat\": 51.50853\n" +
+                "    }\n" +
+                "  }\n" +
+                "  ]";
+
+        List<Map<String, Object>> cities = JsonPath
+                .parse(json)
+                .read("$..[?(@.name == '" + city + "')]", List.class);
+
+        if (cities.size() == 1) {
+        return cities.get(0).get("id").toString();
+
+        } else return null;
+    }
+
+
+    }
