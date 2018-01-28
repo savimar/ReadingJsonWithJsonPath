@@ -5,7 +5,19 @@ import java.util.Map;
 
 public class JsonUtil {
 
+/* private final String FILE_NAME = "/static/city.json";*/
+
     public static String getCodeCity(String city)  {
+    
+    /*    String json = null;       
+        try {
+            InputStream is = this.getClass().getResourceAsStream(FILE_NAME);
+            //     json = new String(Files.readAllBytes(Paths.get(String.valueOf(getClass().getResource()))));
+            StringJoiner stringJoiner = new StringJoiner("");
+            Files.lines(Paths.get(String.valueOf(getClass().getResource(FILE_NAME))), StandardCharsets.UTF_8).forEach(stringJoiner::add);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
         String json = "[\n" +
                 "  {\n" +
